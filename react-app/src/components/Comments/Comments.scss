@@ -1,0 +1,67 @@
+.comments-div-wrapper {
+  border-radius: 14px !important;
+  min-width: 500px;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 10px 10px 19px rgba($color: #000000, $alpha: 0.3);
+  .comments-div {
+    color: #fff;
+    margin-bottom: -2px;
+
+    max-height: 500px;
+    min-width: 350px;
+
+    overflow-y: auto;
+    background-color: #035041;
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 3em;
+        margin: 0.3em 0 0.45em 0.3em;
+      }
+      button {
+        height: fit-content;
+        margin: 1.7em 1.2em auto auto;
+        font-weight: 500;
+      }
+    }
+
+    .comments {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1em;
+      gap: 0.7em;
+      .comment {
+        display: flex;
+        border-bottom: 1px solid rgb(0, 199, 143);
+        margin-right: 1em;
+        .comment__image {
+          width: 3em !important;
+          height: 3em !important;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: rgb(194, 194, 194);
+          border-radius: 50%;
+          margin: 0.5em;
+        }
+        .comment__content {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          margin-left: 0.6em;
+          h5 {
+            margin-bottom: 0.22em;
+            font-size: 1.5em;
+          }
+          p {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
+}

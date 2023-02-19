@@ -1,0 +1,19 @@
+.comment-form {
+  border-radius: 14px !important;
+  padding: 2em;
+  min-width: 500px;
+  width: 90%;
+  height: fit-content;
+  color: #fff;
+  background-color: #035041;
+  h1 {
+    margin-bottom: 0.6em;
+  }
+  button {
+    margin-top: 1em;
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

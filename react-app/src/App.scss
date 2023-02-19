@@ -1,0 +1,16 @@
+body {
+  background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+  background-color: #959595;
+  color: #ffffff;
+}
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+}
+hr {
+  border-top: 3px solid #10b27c;
+  margin: 2em 0;
+  opacity: 0.7;
+}
