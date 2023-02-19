@@ -38,7 +38,7 @@ docker rm -f mysql-blog
 
 Install node modules and run the server
 ```
-npm install
+npm i
 ```
 ```
 npm run start:nodemon
@@ -48,7 +48,7 @@ npm run start:nodemon
 
 Install node modules and run react app
 ```
-npm install
+npm i
 ```
 ```
 npm run dev
