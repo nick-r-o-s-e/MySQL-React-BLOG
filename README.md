@@ -8,7 +8,7 @@ Simple Blog app
 
 Docker must be installed [DOCKER-INSTALL](https://docs.docker.com/engine/install/)
 
-### In ./docker folder
+### In ./docker directory
 
 Build an image from a Dockerfile
 ```
@@ -34,7 +34,7 @@ docker rm -f mysql-blog
 
 ## Express
 
-### In ./express folder
+### In ./express directory
 
 Install node modules and run the server
 ```
@@ -44,7 +44,7 @@ npm install
 npm run start:nodemon
 ```
 
-### In ./react-app folder
+### In ./react-app directory
 
 Install node modules and run react app
 ```
