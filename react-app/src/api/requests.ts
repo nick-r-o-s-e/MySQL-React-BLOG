@@ -43,12 +43,8 @@ export const deletePost = async (id: number) => {
 };
 export const deletePostComments = async (id: string) => {
  const allComments = await getCommentsForPost(Number(id))
-//  await axios.get(`http://localhost:3004/`).then((data)=> console.log(data))
  await axios.delete(`http://localhost:3004/comments?postID=4`)
-  
-  
-  // await axios.post(`http://localhost:3004/comments/`, [...allComments].filter(comment => comment.postID != Number(id)))
-  
+    
 };
 
 
