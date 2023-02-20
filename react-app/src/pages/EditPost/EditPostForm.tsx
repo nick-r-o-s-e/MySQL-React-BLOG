@@ -37,7 +37,7 @@ function EditPostForm() {
     if (imageFile) {
       axios.post("http://localhost:3004/upload", imageFile).then(({ data }) => {
         editPost(id, {
-          ...(postData || data),
+          ...postData,
           image: `http://127.0.0.1:3004/images/${data}`,
         }).then(() => {
           navigate(`/posts/${id}`);
@@ -45,7 +45,7 @@ function EditPostForm() {
       });
     } else {
       editPost(id, {
-        ...(postData || data),
+        ...postData,
       }).then(() => {
         navigate(`/posts/${id}`);
       });
