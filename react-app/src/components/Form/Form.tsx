@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./Form.scss";
+import { useState } from "react";
+
 interface Props {
   submitForm: Function;
   postData: {
@@ -29,12 +30,14 @@ export default function Form({
 
   const saveFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
+
     formData.append("image", e.target.files![0]);
     formData.append("fileName", e.target.files![0].name);
 
     setImageFile(formData);
 
     const reader = new FileReader();
+
     reader.onload = function (event) {
       setImage(event.target!.result);
     };
@@ -54,84 +57,96 @@ export default function Form({
   };
 
   return (
-    <div className="new-post">
+    <div className="post-form__wrapper">
       <form
         encType="multipart/form-data"
-        className="new-post__form"
+        className="post-form"
         action="submit"
         method="post"
         onSubmit={(e) => {
           submitForm(e);
         }}
       >
-        <h1>{postData.id ? "Edit" : "New"} Post</h1>
+        <h1 className="post-form__heading">{postData.id ? "Edit" : "New"} Post</h1>
+
         <hr />
-        <div className="details">
-          <div className="mb-3 detail title-div">
-            <label htmlFor="exampleFormControlInput1" className="form-label">
-              Title
-            </label>
-            <input
-              value={postData.title}
-              name="title"
-              type="text"
-              className="form-control"
-              id="exampleFormControlInput1"
-              required
-              placeholder=""
-              onChange={(e) => {
-                changeData(e.target);
-              }}
-            />
+
+        <div className="post-form__details">
+          <div className="post-form__details__header-info">
+            <div className="mb-3 detail">
+              <label htmlFor="exampleFormControlInput1" className="form-label detail__label">
+                Title
+              </label>
+
+              <input 
+                value={postData.title}
+                name="title"
+                type="text"
+                className="form-control detail__input"
+                id="exampleFormControlInput1"
+                required
+                placeholder=""
+                onChange={(e) => {
+                  changeData(e.target);
+                }}
+              />
+            </div>
+
+            <div className="mb-3 detail">
+              <label htmlFor="FormControlInput2" className="form-label detail__label">
+                Author
+              </label>
+
+              <input
+                value={postData.author}
+                name="author"
+                type="text"
+                id="FormControlInput2"
+                className="form-control detail__input"
+                placeholder=""
+                required
+                onChange={(e) => {
+                  changeData(e.target);
+                }}
+              />
+            </div>
           </div>
-          <div className="mb-3 detail author-div">
-            <label htmlFor="FormControlInput2" className="form-label">
-              Author
-            </label>
-            <input
-              value={postData.author}
-              name="author"
-              type="text"
-              id="FormControlInput2"
-              className="form-control"
-              placeholder=""
-              required
-              onChange={(e) => {
-                changeData(e.target);
-              }}
-            />
-          </div>
-          <div className="mb-3  image-div">
-            <div className="image-input-label">
-              <label className="form-label">Image</label>
+
+          <div className="mb-3  detail-image">
+            <div className="detail-image__label">
+              <label className="form-label detail__label">Image</label>
+
               <label className="file-upload">
                 <input
                   name="image"
                   type="file"
+                  className="detail__input"
                   placeholder=""
                   onChange={(e) => {
                     changeData(e.target, e);
                   }}
                 />
-                Choose File
+                Upload
               </label>
             </div>
+
             <div
-              className="image-placeholder"
+              className="detail-image__placeholder"
               style={{ backgroundImage: `url(${String(image)})` }}
             ></div>
           </div>
         </div>
 
-        <div className="mb-3 content-div">
-          <label htmlFor="FormControlTextarea4" className="form-label">
+        <div className="mb-3">
+          <label htmlFor="FormControlTextarea4" className="form-label detail__label">
             Text
           </label>
+
           <textarea
             id="FormControlTextarea4"
             value={postData.content}
             name="content"
-            className="form-control"
+            className="form-control detail__input detail__input-text"
             required
             onChange={(e) => {
               const target = e.target as unknown as HTMLInputElement;
@@ -139,7 +154,8 @@ export default function Form({
             }}
           ></textarea>
         </div>
-        <button disabled={formDisabled} className="btn btn-dark" type="submit">
+
+        <button disabled={formDisabled} className="btn btn-dark submit-btn" type="submit">
           Submit
         </button>
       </form>

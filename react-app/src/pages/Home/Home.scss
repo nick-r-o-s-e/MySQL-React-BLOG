@@ -1,26 +1,32 @@
-.home-div {
-  padding: 4em 9em;
-  max-width: 2000px;
-  h1 {
-    font-size: 7em;
-  }
+.home {
+  margin: 2em 5%;
 
-  p {
+  .home_text {
     font-size: 1.4em;
   }
-  .socials {
-    display: flex;
-  }
-  .socials {
+
+  .home_socials {
     display: flex;
     gap: 2em;
     width: 100%;
     justify-content: center;
-    margin: 5em 0 2em;
+    margin: 3em 0 2em;
+
     i {
       cursor: pointer;
       font-size: 2em;
       color: rgb(90, 255, 200);
     }
+  }
+}
+
+.home_title {
+  line-height: 100%;
+  font-size: 7em;
+}
+
+@media (max-width: 400px) {
+  .home_title {
+    font-size: 5em;
   }
 }

@@ -4,16 +4,20 @@
   color: #000000;
   box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.2);
   height: min-content;
-  .image-div {
+
+  .card-img-top {
     height: 150px;
     width: 100%;
-    background-color: #a1a1a1;
+    background-color: rgba(35, 35, 35, 0.581);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   .card-body {
-    h5 {
+    word-break: break-all;
+
+    .card-title {
       font-size: 2.7em;
       margin-bottom: 0.3em;
     }

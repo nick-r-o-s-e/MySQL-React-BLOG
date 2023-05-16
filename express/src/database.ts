@@ -16,6 +16,7 @@ export const getPosts = async () => {
   const [posts] = await pool.query("SELECT * FROM Posts");
   return posts;
 };
+
 export const getPost = async (id: string) => {
   const [post] = await pool.query(
     `SELECT *
@@ -34,16 +35,6 @@ export const getPostComments = async (id: string) => {
   return comments;
 };
 
-export const addComment = async (comment: CommentType) => {
-  const { username, image, text, post_id } = comment;
-  await pool.query(
-    `
-      INSERT INTO Comments (username, image, text, post_id)
-      VALUES (?, ?, ?, ?)
-    `,
-    [username, image, text, post_id]
-  );
-};
 export const addPost = async (comment: NewPost) => {
   const { title, image, content, author } = comment;
   await pool.query(
@@ -52,6 +43,17 @@ export const addPost = async (comment: NewPost) => {
       VALUES (?, ?, ?, ?)
     `,
     [title, image, content, author]
+  );
+};
+
+export const addComment = async (comment: CommentType) => {
+  const { username, image, text, post_id } = comment;
+  await pool.query(
+    `
+      INSERT INTO Comments (username, image, text, post_id)
+      VALUES (?, ?, ?, ?)
+    `,
+    [username, image, text, post_id]
   );
 };
 

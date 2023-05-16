@@ -1,0 +1,28 @@
+{
+  "name": "17-hw-mysql-blog",
+  "version": "1.0.0",
+  "description": "Simple Blog app",
+  "main": "index.js",
+  "scripts": {
+    "npm-install": "npm i && concurrently \"cd express && npm i\" \"cd react-app && npm i\"",
+    "docker" : "cd docker && docker build -t mysql-blog . && docker run -p 3306:3306 --name mysql-blog -e MYSQL_ROOT_PASSWORD=password -d mysql-blog",
+    "stop-container": "docker stop mysql-blog",
+    "remove-container": "docker rm -f mysql-blog",
+    "start-app": "concurrently -n react,express -c black.bgCyan,black.bgGreen --kill-others \"cd react-app && npm run dev\" \"cd express && npm run start:nodemon\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-r-o-s-e/17-HW-MySQL-BLOG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nick-r-o-s-e/17-HW-MySQL-BLOG/issues"
+  },
+  "homepage": "https://github.com/nick-r-o-s-e/17-HW-MySQL-BLOG#readme",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

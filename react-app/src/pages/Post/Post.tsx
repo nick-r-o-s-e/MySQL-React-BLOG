@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ExtendedPost from "../../components/ExtendedPost/ExtendedPost";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import "react-toastify/dist/ReactToastify.css";
+import notify from "../../utils/toaster";
 
 function Post() {
   const { id: searchID } = useParams<{ id: string }>();
@@ -13,18 +15,28 @@ function Post() {
   );
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return (
+      <div className="page-container">
+        <LoadingSpinner />
+      </div>
+    );
   }
+
   if (!data) {
-    return <h1>something went wrong</h1>;
+    notify("Oops, something went wrong");
+    return (
+      <div className="page-container not-found">
+        <h1>404 not found...</h1>
+      </div>
+    );
   }
-  const { image, title, author, content, id, comments } = data;
+
+  const { image, title, author, content, id } = data;
 
   return (
     <div className="page-container">
       <ExtendedPost
         postData={data}
-        comments={comments}
         id={id}
         image={image}
         title={title}

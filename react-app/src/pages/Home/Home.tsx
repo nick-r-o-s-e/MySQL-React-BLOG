@@ -2,10 +2,12 @@ import "./Home.scss";
 function Home() {
   return (
     <div className="page-container">
-      <div className="home-div">
-        <h1>Home Page</h1>
+      <div className="home">
+        <h1 className="home_title">Home Page</h1>
+        
         <hr />
-        <p>
+
+        <p className="home_text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
           tincidunt molestie iaculis. Morbi convallis mi id nisi luctus, sit
           amet luctus turpis lobortis. Curabitur lacus massa, dignissim eget
@@ -28,13 +30,16 @@ function Home() {
           conubia nostra, per inceptos himenaeos. Vivamus a turpis nisi. Nam
           massa turpis, suscipit quis pharetra semper, venenatis eu tortor.
         </p>
-        <div className="socials">
+
+        <div className="home_socials">
           <a href="https://twitter.com/" target="_blank">
             <i className="fa-brands fa-square-twitter"></i>
           </a>
+
           <a href="https://www.facebook.com/" target="_blank">
             <i className="fa-brands fa-square-facebook"></i>
           </a>
+
           <a href="https://www.instagram.com/" target="_blank">
             <i className="fa-brands fa-square-instagram"></i>
           </a>

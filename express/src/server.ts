@@ -24,10 +24,10 @@ app.use(express.static("./public"));
 
 //! Use of Multer
 const storage = multer.diskStorage({
-  destination: (req, file, callBack) => {
+  destination: (_, __, callBack) => {
     callBack(null, "./public/images/");
   },
-  filename: (req, file, callBack) => {
+  filename: (_, file, callBack) => {
     callBack(
       null,
       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
@@ -46,7 +46,7 @@ app.post("/upload", upload.single("image"), (req: Request, res: Response) => {
 
 app
   .route("/posts")
-  .get((req: Request, res: Response) => {
+  .get((_: Request, res: Response) => {
     getPosts().then((posts) => {
       res.send(posts);
     });
@@ -71,10 +71,14 @@ app
   })
   .delete((req: Request, res: Response) => {
     getPost(req.params.id).then((post) => {
-      fs.unlink(
-        `./public/images/${post.image.split("images/")[1]}`,
-        (err) => {}
-      );
+      if (!post.image.includes("placeholders/")) {
+        fs.unlink(
+          `./public/images/${post.image.split("images/")[1]}`,
+          (err) => {
+            err && console.log(err);
+          }
+        );
+      }
     });
     deletePost(req.params.id).then(() => {
       res.sendStatus(200);
@@ -92,8 +96,6 @@ app.get("/comments/:id", (req: Request, res: Response) => {
     res.json(comments);
   });
 });
-
-
 
 app.listen(3004, () => {
   console.log("Application started on port 3004!");

@@ -5,4 +5,5 @@ interface CommentType {
   text: string;
   post_id: string;
 }
+
 export default CommentType;

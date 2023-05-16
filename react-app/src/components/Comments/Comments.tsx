@@ -1,17 +1,17 @@
+import "./Comments.scss";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getCommentsForPost } from "../../api/requests";
 import CommentForm from "./CommentForm/CommentForm";
 import CommentType from "../../types/CommentType";
 import PostType from "../../types/PostType";
-import "./Comments.scss";
-import { useQuery } from "@tanstack/react-query";
-import { getCommentsForPost } from "../../api/requests";
-import { TailSpin } from "react-loader-spinner";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
 interface Props {
-  comments: CommentType[];
   postData: PostType;
 }
 
-function Comments({ comments, postData }: Props) {
+function Comments({ postData }: Props) {
   const [commentForm, setCommentForm] = useState(false);
 
   const { data, isLoading, refetch } = useQuery<CommentType[]>(
@@ -23,52 +23,61 @@ function Comments({ comments, postData }: Props) {
   );
 
   if (isLoading) {
-    return <TailSpin />;
+    return (
+      <div className="comments-wrapper">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (!data) {
     return <h1>ERROR</h1>;
   }
-  {
-    return commentForm ? (
-      <CommentForm
-        setCommentForm={setCommentForm}
-        postData={postData}
-        refetch={refetch}
-      />
-    ) : (
-      <div
-        className="comments-div-wrapper"
-        style={{ display: `${commentForm ? "none" : "auto"}` }}
-      >
-        <div className="comments-div">
-          <div className="heading">
-            <h1>Comments</h1>
+
+  return (
+    <div className="comments-wrapper">
+      {commentForm ? (
+        <CommentForm
+          setCommentForm={setCommentForm}
+          postData={postData}
+          refetch={refetch}
+        />
+      ) : (
+        <div className="comments">
+          <div className="comments__header">
+            <h1 className="comments__header__heading">Comments</h1>
+
             <button
-              className="btn btn-light"
+              className="add-comment-btn btn btn-light"
               onClick={() => setCommentForm(true)}
             >
-              Add Comment
+              Add
             </button>
           </div>
 
-          <div className="comments">
+          <div className="comments__list">
             {[...data].reverse().map((comment) => {
               return (
                 <div key={comment.id} className="comment">
-                  <div
-                    className="comment__image"
-                    style={{
-                      backgroundImage: `url(${
-                        comment.image
-                          ? comment.image
-                          : "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
-                      })`,
-                    }}
-                  ></div>
+                  <div className="comment__image-wrapper">
+                    <img
+                      src={comment.image}
+                      alt=""
+                      className="comment__image"
+                      onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src =
+                          "http://127.0.0.1:3004/images/placeholders/user-image-placeholder.png";
+                      }}
+                    />
+                  </div>
+
                   <div className="comment__content">
-                    <h5>{comment.username}</h5>
-                    <p>{comment.text}</p>
+                    <h5 className="comment__content__title">
+                      {comment.username}
+                    </h5>
+
+                    <p className="comment__content__author">{comment.text}</p>
                   </div>
                   <hr />
                 </div>
@@ -76,9 +85,9 @@ function Comments({ comments, postData }: Props) {
             })}
           </div>
         </div>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 }
 
 export default Comments;

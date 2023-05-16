@@ -18,8 +18,10 @@ function NewPostForm() {
   const [formDisabled, setFormDisabled] = useState(false);
 
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    setFormDisabled(true);
     e.preventDefault();
+
+    setFormDisabled(true);
+    
     if (imageFile) {
       axios.post("http://localhost:3004/upload", imageFile).then(({ data }) => {
         addPost({

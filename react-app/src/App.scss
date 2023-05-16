@@ -3,14 +3,37 @@ body {
   background-color: #959595;
   color: #ffffff;
 }
+
 .page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5em;
+  margin: 5em auto 0;
+  max-width: 1800px;
+
+  & > .loading {
+    padding-top: 200px;
+  }
+
+  &.not-found {
+    h1 {
+      margin: 1em;
+      color: #7fffd4;
+      font-size: 4em;
+    }
+  }
 }
+
 hr {
   border-top: 3px solid #10b27c;
   margin: 2em 0;
   opacity: 0.7;
+}
+
+@media (max-width: 530px) {
+  .page-container.not-found {
+    h1 {
+      font-size: 2em;
+    }
+  }
 }

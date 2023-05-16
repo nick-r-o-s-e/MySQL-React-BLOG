@@ -1,93 +1,80 @@
-.new-post {
+.post-form__wrapper {
   width: 100%;
-  max-width: 1700px;
+  max-width: 900px;
   display: flex;
   justify-content: center;
-  margin: 4em 0;
+  margin: 2em 0 4em;
 }
 
-.new-post__form {
-  width: 70%;
+.post-form {
+  width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 1em;
   padding: 1em 2em;
   border-radius: 10px;
   background-color: rgb(3, 80, 65);
-  h1 {
+
+  .post-form__heading {
     text-align: center;
     color: #fff;
     font-size: 3em;
     letter-spacing: 0.12em;
     margin-top: 0.3em;
   }
-  label {
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    font-size: 1.4em;
-    color: #fff;
-  }
-  input {
-    font-size: 1.3em;
-    background-color: #e9eef1 !important;
-  }
-  textarea {
-    font-size: 1.3em;
-    background-color: #e9eef1 !important;
-    min-height: 250px;
-  }
 
   .detail {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    width: 100%;
   }
 
-  .title-div {
-    width: 35%;
+  .detail__label {
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    font-size: 1.4em;
+    color: #fff;
   }
-  .author-div {
-    width: 20%;
+
+  .detail__input {
+    font-size: 1.3em;
+    background-color: #e9eef1;
   }
-  .image-div {
+
+  .detail__input-text {
+    min-height: 300px;
+  }
+
+  .detail-image {
     display: flex;
-    justify-content: space-between;
-    width: 40%;
-    gap: 1em;
-    .image-input-label {
+    justify-content: center;
+    margin-top: 2em;
+    gap: 3em;
+
+    .detail-image__label {
       width: max-content;
       display: flex;
       flex-direction: column;
-      justify-content: end;
-      .file-upload {
-        cursor: pointer;
-      }
-    }
-    .image-placeholder {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 0.375rem;
-
-      width: 53%;
-      height: 100%;
+      justify-content: start;
     }
   }
-  .details {
-    height: 8em;
-    display: flex;
+
+  .post-form__details {
     gap: 2.5em;
   }
-  button {
+
+  .submit-btn {
     width: 30%;
     font-size: 1.4em;
-    line-height: 200%;
+    line-height: 150%;
     place-self: center;
-    margin: 1.5em 0 1em;
+    margin: 1em 0 1em;
   }
 }
 
 .file-upload {
+  cursor: pointer;
   border: none;
   border-radius: 3px;
   width: fit-content;
@@ -95,12 +82,61 @@
   align-items: center;
   padding: 0 0.5em;
   border-radius: 0.375rem;
-  font-size: 1.3em !important;
-  font-weight: 400 !important;
+  font-size: 1.3em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   background-color: rgb(19, 140, 100);
 }
 
 .file-upload input {
   overflow: hidden;
   width: 0;
+}
+
+.detail-image__placeholder {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.6rem;
+  width: 230px;
+  aspect-ratio: 1.4;
+  border: 3px solid rgb(16, 113, 81);
+  background-color: rgba(1, 89, 60, 0.709);
+}
+
+@media (min-width: 800px) {
+  .post-form__details__header-info {
+    display: flex;
+    gap: 2em;
+  }
+}
+
+@media (max-width: 500px) {
+  .post-form {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 340px) {
+  .post-form {
+    padding: 0.5em 1em;
+  }
+
+  .detail-image {
+    align-items: center;
+    flex-direction: column;
+    gap: 1em !important;
+
+    .detail__label {
+      text-align: center;
+    }
+  }
+
+  .detail-image__placeholder {
+    width: 70%;
+  }
+
+  .file-upload {
+    font-size: 1.1em;
+  }
 }
