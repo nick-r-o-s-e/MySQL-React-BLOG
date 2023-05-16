@@ -4,7 +4,7 @@
   "description": "Simple Blog app",
   "main": "index.js",
   "scripts": {
-    "npm-install": "npm i && concurrently \"cd express && npm i\" \"cd react-app && npm i\"",
+    "npm-install": "npm i && concurrently -n express,react \"cd express && npm i\" \"cd react-app && npm i\"",
     "docker" : "cd docker && docker build -t mysql-blog . && docker run -p 3306:3306 --name mysql-blog -e MYSQL_ROOT_PASSWORD=password -d mysql-blog",
     "stop-container": "docker stop mysql-blog",
     "remove-container": "docker rm -f mysql-blog",
