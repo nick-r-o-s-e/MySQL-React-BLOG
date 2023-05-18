@@ -4,8 +4,8 @@ USE Blog;
 
 CREATE TABLE Posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255),
-    author VARCHAR(255),
+    title TEXT,
+    author TEXT,
     content TEXT,
     image TEXT
 
@@ -13,8 +13,8 @@ CREATE TABLE Posts (
 
 CREATE TABLE Comments (
     id INT AUTO_INCREMENT,
-    username VARCHAR(255),
-    text VARCHAR(255),
+    username TEXT,
+    text TEXT,
     image TEXT,
     post_id INT,
     PRIMARY KEY(id),

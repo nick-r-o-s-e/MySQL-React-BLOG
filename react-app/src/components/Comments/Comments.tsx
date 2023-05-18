@@ -45,7 +45,7 @@ function Comments({ postData }: Props) {
       ) : (
         <div className="comments">
           <div className="comments__header">
-            <h1 className="comments__header__heading">Comments</h1>
+            <h1 className="heading-comments">Comments</h1>
 
             <button
               className="add-comment-btn btn btn-light"
@@ -56,9 +56,9 @@ function Comments({ postData }: Props) {
           </div>
 
           <div className="comments__list">
-            {[...data].reverse().map((comment) => {
+            {[...data].reverse().map((comment, i) => {
               return (
-                <div key={comment.id} className="comment">
+                <div key={comment.id} className={`comment ${i == data.length-1 ? "comment-last" : ""}`}>
                   <div className="comment__image-wrapper">
                     <img
                       src={comment.image}
@@ -73,11 +73,11 @@ function Comments({ postData }: Props) {
                   </div>
 
                   <div className="comment__content">
-                    <h5 className="comment__content__title">
+                    <h5 className="comment__content__author">
                       {comment.username}
                     </h5>
 
-                    <p className="comment__content__author">{comment.text}</p>
+                    <p className="comment__content__text">{comment.text}</p>
                   </div>
                   <hr />
                 </div>

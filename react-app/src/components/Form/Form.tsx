@@ -1,5 +1,5 @@
 import "./Form.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   submitForm: Function;
@@ -27,6 +27,10 @@ export default function Form({
       ? postData.image
       : "http://127.0.0.1:3004/images/placeholders/image-placeholder.jpg"
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const saveFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();

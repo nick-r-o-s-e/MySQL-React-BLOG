@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { getSinglePost } from "../../api/requests";
 import PostType from "../../types/PostType";
 import { useParams } from "react-router-dom";
@@ -13,6 +14,10 @@ function Post() {
   const { data, isLoading } = useQuery<PostType>(["post", searchID], () =>
     getSinglePost(Number(searchID)!)
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (isLoading) {
     return (

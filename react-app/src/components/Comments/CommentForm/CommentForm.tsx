@@ -37,7 +37,7 @@ function CommentForm({ postData, setCommentForm, refetch }: Props) {
       className="comment-form"
       onSubmit={(e) => submitForm(e)}
     >
-      <h1 className="comment-form__heading">New Comment</h1>
+      <h1 className="heading-comments">New Comment</h1>
 
       <div className="comment-form__info">
         <div className="mb-3 comment-form__info__input">
@@ -93,20 +93,20 @@ function CommentForm({ postData, setCommentForm, refetch }: Props) {
 
       <div className="comment-form__btns">
         <button
+          disabled={formDisabled}
+          type="submit"
+          className="btn btn-success action-btn"
+        >
+          Submit
+        </button>
+
+        <button
           className="btn btn-danger action-btn"
           onClick={() => {
             setCommentForm(false);
           }}
         >
           Cancel
-        </button>
-
-        <button
-          disabled={formDisabled}
-          type="submit"
-          className="btn btn-dark action-btn"
-        >
-          Submit
         </button>
       </div>
     </form>

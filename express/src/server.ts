@@ -98,5 +98,5 @@ app.get("/comments/:id", (req: Request, res: Response) => {
 });
 
 app.listen(3004, () => {
-  console.log("Application started on port 3004!");
+  console.log("Server is running on port 3004!");
 });

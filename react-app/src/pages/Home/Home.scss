@@ -22,11 +22,11 @@
 
 .home_title {
   line-height: 100%;
-  font-size: 7em;
+  font-size: 6em;
 }
 
-@media (max-width: 400px) {
+@media (min-width: 500px) {
   .home_title {
-    font-size: 5em;
+    font-size: 7em;
   }
 }

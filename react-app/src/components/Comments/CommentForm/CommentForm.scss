@@ -1,24 +1,21 @@
 .comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 423px;
   padding: 1.5em;
   width: 100%;
   height: fit-content;
   color: #fff;
   background-color: #035041;
   color: #fff;
-  margin-bottom: -2px;
-  max-height: 500px;
   overflow-y: auto;
   background-color: #035041;
-
-  .comment-form__heading {
-    margin-bottom: 0.6em;
-  }
 
   .comment-form__info {
     display: flex;
     justify-content: space-between;
   }
-
 }
 
 .comment-form__info__input {
@@ -31,8 +28,10 @@
 }
 
 .action-btn {
+  font-size: .8em;
   margin-top: 1em;
 }
+
 @media (max-width: 630px) {
   .comment-form__info {
     flex-direction: column;
@@ -42,13 +41,14 @@
     width: 100%;
   }
 
-  .action-btn{
-    font-size:.8em
-  }
 }
 
 @media (min-width: 470px) {
   .comment-form {
     padding: 2em;
+  }
+
+  .action-btn{
+    font-size:1em
   }
 }
