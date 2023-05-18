@@ -45,6 +45,6 @@ Locally running app -> http://localhost:5173
 
 ## Previews: 
 <p align="top" width="100%">
-    <img width="79%" src="https://github.com/nick-r-o-s-e/MySQL-React-BLOG/blob/main/assets/MySQL-BLOG-Preview-desktop.gif">
+    <img width="80%" src="https://github.com/nick-r-o-s-e/MySQL-React-BLOG/blob/main/assets/MySQL-BLOG-Preview-desktop.gif">
     <img width="19%" src="https://github.com/nick-r-o-s-e/MySQL-React-BLOG/blob/main/assets/MySQL-BLOG-Preview-mobile.gif">
 </p>
